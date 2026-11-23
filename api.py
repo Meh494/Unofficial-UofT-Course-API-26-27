@@ -56,7 +56,10 @@ def create_app(catalog_path: Path | None = None) -> FastAPI:
         yield
 
     app = FastAPI(title="Unofficial UofT Course API (2026–2027)", version="1.0.0",
-                  description="An independent, read-only API for UofT academic calendar listings.",
+                  description=("An independent, read-only API for UofT academic calendar listings. "
+                               "The public catalog includes course codes, titles, faculties, numeric credits "
+                               "where available, and official source links. Description and requirement "
+                               "fields are empty in the public catalog."),
                   lifespan=lifespan)
 
     @app.get("/health", responses={503: {"model": Health}})
@@ -89,8 +92,9 @@ def create_app(catalog_path: Path | None = None) -> FastAPI:
         page: Annotated[int, Query(ge=1)] = 1,
         page_size: Annotated[int, Query(ge=1, le=100)] = 20,
     ) -> CoursePage:
-        """Filter by faculty, then rank by exact code, prefix, title, interior code, and description.
+        """Filter by faculty, then rank by exact code, prefix, title, and interior code.
 
+        Snapshots with descriptions also support description matches at the lowest rank.
         Ties and unfiltered listings are sorted by code. Total is measured before pagination.
         """
         slug = faculty.strip().casefold()

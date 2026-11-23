@@ -4,10 +4,23 @@ import json
 import unittest
 
 from api import DEFAULT_PATH
+from catalog.export_public import PUBLIC_PATH
 from catalog.store import Catalog
 
 
 class TestLocalRelease(unittest.TestCase):
+    def test_public_facts_match_private_snapshot(self):
+        private = json.loads(DEFAULT_PATH.read_bytes())
+        public = json.loads(PUBLIC_PATH.read_bytes())
+        for field in ("academic_year", "generated_utc", "coverage"):
+            self.assertEqual(public[field], private[field])
+        fields = ("code", "title", "faculty", "faculties", "credits", "source_url", "source_urls")
+        private_rows = {row["code"]: row for row in private["courses"]}
+        self.assertEqual({row["code"] for row in public["courses"]}, private_rows.keys())
+        for row in public["courses"]:
+            source = private_rows[row["code"]]
+            self.assertEqual({k: row[k] for k in fields}, {k: source[k] for k in fields}, row["code"])
+
     def test_preserves_all_original_courses(self):
         original = json.loads(DEFAULT_PATH.with_name("courses-complete-backup.json").read_bytes())
         current = json.loads(DEFAULT_PATH.read_bytes())
