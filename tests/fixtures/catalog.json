@@ -1,0 +1,59 @@
+{
+  "academic_year": "2026-2027",
+  "generated_utc": "2026-10-01T12:00:00Z",
+  "source": "Handwritten test fixture. All course details are illustrative.",
+  "coverage": {"artsci": 3, "engineering": 2, "medicine": 1, "music": 1},
+  "errors": [],
+  "courses": [
+    {
+      "code": "CSC207H1",
+      "title": "Software Design",
+      "description": "Example for testing a title search and an exact course lookup.",
+      "faculty": "Arts & Science",
+      "faculties": ["artsci"],
+      "prerequisites": "Example prerequisite text.",
+      "exclusions": "Example exclusion text.",
+      "source_url": "https://artsci.calendar.utoronto.ca/search-courses"
+    },
+    {
+      "code": "MAT237Y1",
+      "title": "Calculus Example",
+      "faculty": "Arts & Science",
+      "faculties": ["artsci"],
+      "source_url": "https://artsci.calendar.utoronto.ca/search-courses"
+    },
+    {
+      "code": "DEM201H1",
+      "title": "Cross-listing Example",
+      "faculty": "Arts & Science",
+      "faculties": ["artsci", "engineering"],
+      "source_url": "https://artsci.calendar.utoronto.ca/search-courses",
+      "source_urls": [
+        "https://artsci.calendar.utoronto.ca/search-courses",
+        "https://engineering.calendar.utoronto.ca/search-courses"
+      ]
+    },
+    {
+      "code": "DEM301H1",
+      "title": "Engineering Example",
+      "faculty": "Engineering",
+      "faculties": ["engineering"],
+      "source_url": "https://engineering.calendar.utoronto.ca/search-courses"
+    },
+    {
+      "code": "DEM310Y",
+      "title": "Medical Code Example",
+      "faculty": "Medicine (MD)",
+      "faculties": ["medicine"],
+      "source_url": "https://md.calendar.utoronto.ca/search-courses"
+    },
+    {
+      "code": "DEM254H1",
+      "title": "Fractional Credit Example",
+      "faculty": "Music",
+      "faculties": ["music"],
+      "credits": 0.17,
+      "source_url": "https://music.calendar.utoronto.ca/search-courses"
+    }
+  ]
+}

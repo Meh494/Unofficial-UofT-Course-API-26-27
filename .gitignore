@@ -1,0 +1,57 @@
+# Local calendar snapshots, raw downloads, and backups
+/data/
+courses.json
+courses-*.json
+raw_html/
+raw_pdfs/
+backups/
+*-backup.*
+*.bak
+*.backup
+*.old
+
+# Python environments, generated packages, and caches
+.venv*/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.tox/
+.coverage*
+htmlcov/
+
+# Local credentials and machine-specific configuration
+.env
+.env.*
+.aws/
+.ssh/
+.pypirc
+.netrc
+_netrc
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+secrets/
+
+# Editor state and temporary output
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.temp
+*.swp
+*~
+tmp/
+temp/
+.catalog-verification/
